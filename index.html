@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Display</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #profile-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        #user-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="profile-container">
+        <h1>Welcome!</h1>
+        
+        <img id="user-avatar" src="" alt="User Avatar">
+        <h2 id="user-name"></h2>
+        <p id="account-status"></p>
+    </div>
+
+    <script>
+        // This is where you would get the data from a real source.
+        // For this example, we'll use a hardcoded JavaScript object.
+        // In a real application, this data might come from an API call
+        // or be dynamically injected by a server-side language like Python.
+        const fetchedProfileData = {
+            'user_name': 'Andrea Mae Anonuevo',
+            'avatar_url': 'https://mapua.instructure.com/images/messages/avatar-50.png',
+            'account_text': 'Account'
+        };
+
+        // Get a reference to the HTML elements
+        const userAvatarElement = document.getElementById('user-avatar');
+        const userNameElement = document.getElementById('user-name');
+        const accountStatusElement = document.getElementById('account-status');
+
+        // Check if the data exists before trying to display it
+        if (fetchedProfileData) {
+            // Use the fetched data to update the content of the HTML elements
+            userAvatarElement.src = fetchedProfileData.avatar_url;
+            userAvatarElement.alt = `Avatar of ${fetchedProfileData.user_name}`; // Use a better alt text for accessibility
+            userNameElement.textContent = fetchedProfileData.user_name;
+            accountStatusElement.textContent = `Status: Logged in to your ${fetchedProfileData.account_text}`;
+        } else {
+            // Handle the case where no data was found
+            userNameElement.textContent = 'User data not available.';
+            accountStatusElement.textContent = 'Please try again later.';
+        }
+    </script>
+
+</body>
+</html>
